@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>
-   <strong>Add New Story</strong>
-</h1>
-<div class="column is-full">
-<form action="" method="post">
-   {% csrf_token %}
-   {{ form.as_p }}
-   <button class="button is-success" type="submit" value="Submit">Publish</button>
-</form>
-</div>
+
+{% if song %}
+  <h1>{{ song.song_title }}</h1>
+  {% if stories %}
+    {% for story in stories  %}
+      <h1>{{ story.author.username }}</h1>
+      <textarea name="name" rows="8" cols="80">
+        {{ story.content }}
+      </textarea>
+    {% endfor %}
+  {% else %}
+  <strong>No hay historias para esta canción</strong>
+  {% endif %}
+{% else %}
+  No encontrado
+{% endif %}
+
+
 {% endblock %}

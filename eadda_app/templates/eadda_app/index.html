@@ -2,7 +2,11 @@
 {% block content %}
 <div>
   {% if stories %}
-  <h3>{{ stories.id_songs.song_title}}</h3>
+  <h3>
+    <a href="/eadda/{{ stories.id_songs.slug}}">
+      {{ stories.id_songs.song_title}}
+    </a>
+  </h3>
   <ul>
 
       <li>{{ stories.content }}</li>

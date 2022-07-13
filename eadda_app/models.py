@@ -1,11 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 
 class SongInfo(models.Model):
     song_title = models.CharField(max_length=222, unique=True)
     song_lyrics = models.TextField(max_length=5000)
     song_video_url = models.URLField(max_length=200, blank=True)
+    slug = models.SlugField(unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.song_title)
+        super(SongInfo, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = 'Songs Info'
