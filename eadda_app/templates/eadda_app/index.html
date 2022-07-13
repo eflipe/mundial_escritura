@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 <div>
-            hey there partner! <br />
-            <strong>{{ boldmessage }}</strong><br />
-        </div>
+  {% if stories %}
+  <h3>{{ stories.id_songs.song_title}}</h3>
+  <ul>
+
+      <li>{{ stories.content }}</li>
+
+  </ul>
+  {% else %}
+  <strong>Nada por ahora! </strong>
+  {% endif %}
+</div>
 {% endblock %}

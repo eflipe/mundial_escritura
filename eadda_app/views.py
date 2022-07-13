@@ -3,8 +3,10 @@ from .models import Stories
 from .forms import StoryForm
 
 def index(request):
+    # show last story
+    stories_list = Stories.objects.order_by('-created_at')[0]
     context_dict = {
-        'boldmessage': 'Prueba 1234'
+        'stories': stories_list
     }
     template = 'eadda_app/index.html'
     return render(request, template, context_dict)
