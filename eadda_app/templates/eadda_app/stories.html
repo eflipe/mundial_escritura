@@ -2,13 +2,15 @@
 {% block content %}
 
 {% if song %}
-  <h1>{{ song.song_title }}</h1>
+  <h1 class="title" >{{ song.song_title }}</h1>
   {% if stories %}
     {% for story in stories  %}
-      <h1>{{ story.author.username }}</h1>
-      <textarea name="name" rows="8" cols="80">
-        {{ story.content }}
-      </textarea>
+      <section>
+        <h1 class="subtitle">{{ story.author.username }} escribió:</h1>
+        <p class="mb-4">
+          {{ story.content }}
+        </p>
+      </section>
     {% endfor %}
   {% else %}
   <strong>No hay historias para esta canción</strong>

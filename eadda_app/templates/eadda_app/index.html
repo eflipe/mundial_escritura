@@ -2,16 +2,20 @@
 {% block content %}
 <div>
   {% if stories %}
-  <h3>
+  <section class="section">
+    <h2 class="is-size-6 title">
+      Últimas historias agregadas:
+    </h2>
+    <br>
+  <h3 class="is-size-6 subtitle">
     <a href="/eadda/{{ stories.id_songs.slug}}">
       {{ stories.id_songs.song_title}}
     </a>
   </h3>
-  <ul>
 
-      <li>{{ stories.content }}</li>
-
-  </ul>
+      <p>{{ stories.content }}</p>
+      <p class='is-size-7 mt-4'>Escrito por: {{stories.author.username}}</p>
+  </section>
   {% else %}
   <strong>Nada por ahora! </strong>
   {% endif %}
