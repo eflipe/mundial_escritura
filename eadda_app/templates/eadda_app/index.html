@@ -1,20 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 <div>
+  <section class="hero is-small is-primary">
+    <div class="hero-body">
+      <p class="title">
+        EADDA
+      </p>
+      <p class="subtitle">
+Escribí un texto utilizando las canciones del
+<strong>"Amor después del amor"</strong> como disparador.
+
+
+      </p>
+    </div>
+  </section>
   {% if stories %}
   <section class="section">
-    <h2 class="is-size-6 title">
-      Últimas historias agregadas:
-    </h2>
-    <br>
-  <h3 class="is-size-6 subtitle">
-    <a href="/eadda/{{ stories.id_songs.slug}}">
-      {{ stories.id_songs.song_title}}
-    </a>
-  </h3>
+    <p class="is-size-6 title">
+      Últimos textos agregados:
+    </p>
+  <div class="box mb-4">
+    <h3 class="is-size-6 subtitle">
+      <a href="/eadda/{{ stories.id_songs.slug}}">
+        {{ stories.id_songs.song_title}}
+      </a>
+    </h3>
+      {{ stories.content }}
+      <p class="mt-4">
+        <small>Escrito por: {{ stories.author.username }}</small>
+      </p>
+  </div>
 
-      <p>{{ stories.content }}</p>
-      <p class='is-size-7 mt-4'>Escrito por: {{stories.author.username}}</p>
   </section>
   {% else %}
   <strong>Nada por ahora! </strong>

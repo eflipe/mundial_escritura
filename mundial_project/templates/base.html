@@ -7,10 +7,10 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
    </head>
    <body>
-     <nav class="navbar" role="navigation" aria-label="main navigation">
+     <nav class="navbar container" role="navigation" aria-label="main navigation">
        <div class="navbar-brand">
-         <a class="navbar-item" href="">
-           Home
+         <a class="navbar-item" href="{% url 'eadda_app:index' %}">
+           Inicio
          </a>
          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
            <span aria-hidden="true"></span>
@@ -21,11 +21,11 @@
 
        <div id="navbarBasicExample" class="navbar-menu" id="navMenu" >
          <div class="navbar-start">
-           <a class="navbar-item">
-             Historias
+           <a class="navbar-item"  href="{% url 'eadda_app:list_songs' %}">
+            Textos por canción
            </a>
-           <a class="navbar-item">
-             Documentation
+           <a class="navbar-item" href="{% url 'eadda_app:add_stories_list' %}">
+             Escribir un texto
            </a>
 
            <div class="navbar-item has-dropdown is-hoverable">
@@ -78,10 +78,10 @@
 
       <footer class="footer">
         <div class="content has-text-centered">
-          <p> EADD 2022</p>
+          <p> EADDA 2022</p>
         </div>
       </footer>
-      
+
       <script type="text/javascript">
       document.addEventListener('DOMContentLoaded', () => {
 

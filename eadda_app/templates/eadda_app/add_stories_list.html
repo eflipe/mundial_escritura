@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="content">
+  <ol type="1">
+    {% for song in list_songs %}
+    <a href="{% url 'eadda_app:add_story' song.slug %}">
+      <li>  {{ song.song_title}}</li>
+    </a>
+    {% endfor %}
+  </ol>
+</div>
+
+
+
+{% endblock %}
