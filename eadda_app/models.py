@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
 class SongInfo(models.Model):
     song_title = models.CharField(max_length=222, unique=True)
     song_lyrics = models.TextField(max_length=5000)

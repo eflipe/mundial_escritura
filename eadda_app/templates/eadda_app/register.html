@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title_block %}Sign Up {% endblock %}
+{% block content %}
+{% if registered %}
+<strong> ¡Ya estás registrado! </strong>
+<a href="{% url 'eadda_app:add_stories_list' %}">Escribir una historia.</a>
+{% else %}
+<h1>Completa los campos a continuación:</h1>
+<form id="user_form" method="post" action="{% url 'eadda_app:register' %}">
+  {% csrf_token %}
+  {{ user_form.as_p }}
+
+  <input type="submit" name="submit" value="Registrarse">
+
+</form>
+{% endif %}
+{% endblock %}
