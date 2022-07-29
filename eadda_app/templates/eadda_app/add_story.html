@@ -1,23 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="class="subtitle">
+<h1 class="subtitle">
   {{ song.song_title }}
 </h1>
 
-
-<form class="" action="/eadda/{{song.slug}}/add/" method="post">
+<form class="box" role="form" action="/eadda/{{song.slug}}/add/" method="post">
   {% csrf_token %}
-  {% for hidden in form.hidden_fields %}
+  <div class="content">
+    {% for hidden in form.hidden_fields %}
     {{ hidden }}
-  {% endfor %}
-  {% for field in form.visible_fields %}
+    {% endfor %}
+    {% for field in form.visible_fields %}
     {{ field.errors }}
     {{ field.help_text }}
     {{ field }}
-  {% endfor %}
-  <!-- <input type="submit" name="submit" value="Guardar" /> -->
-  <button type="submit" value="Guardar" >Guardar!</button>
-</form>
+    {% endfor %}
 
+  </div>
+  <button type="submit" value="Guardar" class="button is-primary is-rounded">Guardar!</button>
+</form>
+<div class="">
+
+</div>
+<div class="block">
+  <a href="{{ song.song_video_url }}"  target="_blank" >
+    <button class="button">
+      <span class="icon">
+        <i class="fa-brands fa-youtube"></i>
+      </span>
+      <span>Escuchar canción en youtube</span>
+    </button>
+  </a>
+</div>
+<div class="content">
+
+  {{ song.song_lyrics|linebreaks }}
+
+</div>
 {% endblock %}

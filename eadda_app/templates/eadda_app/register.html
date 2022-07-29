@@ -6,13 +6,35 @@
 <strong> ¡Ya estás registrado! </strong>
 <a href="{% url 'eadda_app:add_stories_list' %}">Escribir una historia.</a>
 {% else %}
-<h1>Completa los campos a continuación:</h1>
-<form id="user_form" method="post" action="{% url 'eadda_app:register' %}">
-  {% csrf_token %}
-  {{ user_form.as_p }}
+<div class="block">
+  <h1>Completa los campos a continuación:</h1>
+</div>
 
-  <input type="submit" name="submit" value="Registrarse">
+<form class="box" role="form" id="user_form" method="post" action=".">
+{% csrf_token %}
+  <div class="field">
+    <label for="id_username" class="label">Nombre de usuario:</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Usuario" name="username" id="id_username">
+    </div>
+  </div>
 
+  <!-- <div class="field">
+    <label for="id_email" class="label">Email</label>
+    <div class="control">
+      <input class="input" type="email" placeholder="Email" name="email" id="id_email">
+    </div>
+  </div> -->
+
+  <div class="field">
+    <label for="id_password" class="label">Password</label>
+    <div class="control">
+      <input class="input" type="password" name="password" placeholder="Password" id="id_password">
+    </div>
+  </div>
+
+  <button type="submit" name="submit" value="Registrarse" class="button is-primary">Sign in</button>
 </form>
+
 {% endif %}
 {% endblock %}

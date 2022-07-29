@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>EADDA | {% block title_block %}{% endblock %}</title>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+      <script src="https://kit.fontawesome.com/292b475904.js" crossorigin="anonymous"></script>
    </head>
    <body>
      <nav class="navbar container" role="navigation" aria-label="main navigation">
@@ -24,39 +25,19 @@
            <a class="navbar-item"  href="{% url 'eadda_app:list_songs' %}">
             Textos por canción
            </a>
+           {% if user.is_authenticated %}
            <a class="navbar-item" href="{% url 'eadda_app:add_stories_list' %}">
              Escribir un texto
            </a>
-
-           <div class="navbar-item has-dropdown is-hoverable">
-             <a class="navbar-link">
-               More
-             </a>
-
-             <div class="navbar-dropdown">
-               <a class="navbar-item">
-                 About
-               </a>
-               <a class="navbar-item">
-                 Jobs
-               </a>
-               <a class="navbar-item">
-                 Contact
-               </a>
-               <hr class="navbar-divider">
-               <a class="navbar-item">
-                 Report an issue
-               </a>
-             </div>
-           </div>
+           {% endif %}
          </div>
 
          <div class="navbar-end">
            <div class="navbar-item">
              {% if user.is_authenticated %}
-             <a class="navbar-item">
+             <!-- <a class="navbar-item">
                Hola, {{ user.username }}!
-             </a>
+             </a> -->
              <a class="button is-light" href="{% url 'eadda_app:logout' %}">
                Salir
              </a>

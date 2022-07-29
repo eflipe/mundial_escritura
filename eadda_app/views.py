@@ -69,6 +69,7 @@ def add_stories(request, song_title_slug):
         if form.is_valid():
             if song:
                 story = form.save(commit=False)
+                story.author = request.user
                 story.id_songs = song
                 story.save()
 
@@ -78,7 +79,6 @@ def add_stories(request, song_title_slug):
 
     context_dict = {'form': form, 'song': song}
     template = 'eadda_app/add_story.html'
-
 
     return render(request, template, context_dict)
 
@@ -93,7 +93,7 @@ def register(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-
+            login(request, user)
             registered = True
         else:
             print(user_form.errors)
@@ -125,8 +125,10 @@ def user_login(request):
                 return redirect(reverse('eadda_app:index'))
             else:
                 return HttpResponse("Your account is disabled.")
-    else:
-        return render(request, template)
+        else:
+            return HttpResponse("Los datos ingresados son incorrectos.")
+
+    return render(request, template)
 
 
 @login_required

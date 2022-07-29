@@ -10,9 +10,20 @@
       Escribí un texto utilizando las canciones del
       <strong>"Amor después del amor"</strong> como disparador.
       </p>
-      <a href="{% url 'eadda_app:register' %}">
-        Registrate para comenzar!
+      {% if user.is_authenticated %}
+      <a href="{% url 'eadda_app:add_stories_list' %}">
+        Hola, {{ user.username }}!
+        Selecciona una canción de la <strong>lista</strong> para comenzar a escribir!
+        <br>
+        Ver lista de canciones
       </a>
+      {% else %}
+      <p class="block">
+        <a href="{% url 'eadda_app:login' %}">
+          Ingresa para comenzar!
+        </a>
+      </p>
+      {% endif %}
     </div>
   </section>
   {% if stories %}

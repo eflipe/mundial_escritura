@@ -4,9 +4,9 @@ from .models import Stories
 
 
 class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
-    username = forms.CharField(label='Nombre de usuario')
-    email = forms.CharField(label='Email')
+    password = forms.CharField(widget=forms.PasswordInput(), required=True)
+    username = forms.CharField(label='Nombre de usuario', required=True)
+    email = forms.CharField(label='Email', required=False)
 
     class Meta:
         model = User
@@ -19,7 +19,7 @@ class StoryForm(forms.ModelForm):
 
     class Meta:
         model = Stories
-        fields  = ['author', 'content', 'views', 'likes']
-        # widgets = {
-        #     'content': forms.Textarea(attrs={'cols': 50, 'rows': 30}),
-        # }
+        fields  = ['content', 'views', 'likes']
+        widgets = {
+            'content': forms.Textarea(attrs={'placeholder':'Escribe aquí!', 'class':"control textarea"}),
+        }
