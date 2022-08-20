@@ -7,7 +7,7 @@
   {% if stories %}
     {% for story in stories  %}
     <div class="box mb-4">
-        {{ story.content }}
+        {{ story.content|linebreaksbr }}
         <p class="mt-4">
           <small>Escrito por: {{ story.author.username }}</small>
         </p>
